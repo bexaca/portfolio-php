@@ -1,0 +1,739 @@
+@font-face {
+    font-family: 'aleobold';
+    src: url('../fonts/Aleo-Bold-webfont.eot');
+    src: url('../fonts/Aleo-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Aleo-Bold-webfont.woff') format('woff'),
+         url('../fonts/Aleo-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/Aleo-Bold-webfont.svg#aleobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'aleolightitalic';
+    src: url('../fonts/Aleo-LightItalic-webfont.eot');
+    src: url('../fonts/Aleo-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Aleo-LightItalic-webfont.woff') format('woff'),
+         url('../fonts/Aleo-LightItalic-webfont.ttf') format('truetype'),
+         url('../fonts/Aleo-LightItalic-webfont.svg#aleolightitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'aleoregular';
+    src: url('../fonts/Aleo-Regular-webfont.eot');
+    src: url('../fonts/Aleo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Aleo-Regular-webfont.woff') format('woff'),
+         url('../fonts/Aleo-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Aleo-Regular-webfont.svg#aleoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'wc_mano_negra_btabold';
+    src: url('../fonts/WCManoNegraBoldBta-webfont.eot');
+    src: url('../fonts/WCManoNegraBoldBta-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/WCManoNegraBoldBta-webfont.woff') format('woff'),
+         url('../fonts/WCManoNegraBoldBta-webfont.ttf') format('truetype'),
+         url('../fonts/WCManoNegraBoldBta-webfont.svg#wc_mano_negra_btabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'wc_mano_negra_btaregular';
+    src: url('../fonts/WCManoNegraBta-webfont.eot');
+    src: url('../fonts/WCManoNegraBta-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/WCManoNegraBta-webfont.woff') format('woff'),
+         url('../fonts/WCManoNegraBta-webfont.ttf') format('truetype'),
+         url('../fonts/WCManoNegraBta-webfont.svg#wc_mano_negra_btaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'aleolight';
+    src: url('../fonts/Aleo-Light-webfont.eot');
+    src: url('../fonts/Aleo-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Aleo-Light-webfont.woff') format('woff'),
+         url('../fonts/Aleo-Light-webfont.ttf') format('truetype'),
+         url('../fonts/Aleo-Light-webfont.svg#aleolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-----General style
+------------------------------------------------------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+}
+#picture{
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 100%;
+    height: auto;
+}
+header{
+    text-align: center;
+}
+header>a{
+    float: left;
+    margin-left: 5%;
+}
+.clear{
+    clear: both;
+}
+a{
+    text-decoration:none;
+}
+nav{
+    font-family: aleobold;
+}
+nav a{
+    display: block;
+    font-family: aleobold;
+    font-size: 87.5%;
+    padding: 5% 0;
+    text-decoration: none;
+    color: #3b3b3b;
+}
+nav a:hover{
+    color:#f34949;
+    background-color: #3b3b3b;
+}
+#navigation{
+    float: right;
+    color: #3b3b3b;
+    font-family: aleobold;
+    margin-top: 15px;
+    margin-right: 5%
+}
+#navigation:hover{
+    cursor: pointer;
+    color: #f34949;
+}
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 10px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 200%;
+    font-family: aleobold;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+#navi{
+    display: none;
+}
+#hero-one{
+    background-image: url("../img/cover.jpg");
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 100%;
+    background-size: cover;
+}
+#hero-two{
+    background-image: url("../img/cover1.jpg");
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 100%;
+    background-size: cover;
+}
+#hero-one h1, #hero-two h1{
+    font-family: wc_mano_negra_btaregular;
+    color: white;
+    padding-top: 20%;
+    padding-bottom: 2%;
+    font-size: 38px;
+    font-weight: 300;
+}
+#hero-one h4, #hero-two h4{
+    font-size: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: 300;
+    padding-bottom: 100px;
+}
+#hero-one h4 span, #hero-two h4 span{
+    margin: 0 25px;
+    font-family: aleoregular;
+    color: white;
+    font-size: 100%;
+    letter-spacing: 0.7px;
+}
+#hero-one h4:before,
+#hero-one h4:after,
+#hero-two h4:before,
+#hero-two h4:after{
+    background: white;
+    height: 1px;
+    flex: 1;
+    content: '';
+}
+.slides li:first-child{
+    display: list-item;
+}
+#two{
+    text-align: center;
+}
+#shape {
+    width: 155px;
+    height: 60px;
+    padding-top: 15px;
+    position: relative;
+    background: #f34949;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+#shape:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 13px solid white;
+    border-left: 75px solid transparent;
+    border-right: 80px solid transparent;
+}
+#two h2{
+    margin-top: 4px;
+    font-family: aleobold;
+    color: white;
+    font-size: 130%;
+}
+#two-a{
+    margin-top: 75px;
+    font-family: aleoregular;
+}
+#two-c, #two-d, #two-b{
+    font-family: aleoregular;
+}
+#two-c, #two-d{
+    display: none;
+}
+#two-a p, #two-b p, #two-c p, #two-d p{
+    padding: 1%;
+    color: #555555;
+}
+.italic{
+    font-family: aleolightitalic;
+    font-size: 12px;
+    color: #b7b7b7;
+}
+.article{
+    margin: 0 10px 10px;
+}
+#load{
+    margin: 50px 0;
+    cursor: pointer;
+    border: 1px solid #b7b7b7;
+    padding: 5px 10px 5px 10px;
+    background-color:#f34949; 
+}
+#load p{
+    font-size: 110%;
+    display: inline-block;
+    border-right: 1px solid white;
+    padding-right: 10px;
+    color: white;
+    margin-right: 2px;
+}
+i {
+    border: solid #b7b7b7;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 7px;
+    margin-bottom: 2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+#three{
+    text-align: center;
+}
+#three h2 {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    font-weight: 300;
+}
+#three h2 span{
+    color: #3b3b3b;
+    font-family: aleobold;
+    font-size: 90%;
+    margin-right: 20px;
+}
+#three h2:after {
+    background: #e5e3e3;
+    height: 1px;
+    flex: 1;
+    content: '';
+}
+#three>img{
+    padding: 25px;
+}
+#myBtn:hover, #myBtn1:hover, #myBtn2:hover, #myBtn3:hover{
+    background-color: #f34949;
+}
+#three p{
+    font-family: aleolight;
+    color: #555555;
+    font-size: 100%;
+    margin-top: 30px;
+}
+#three p:nth-child(4){
+    margin-top: 0;
+}
+#three .stars{
+    margin-bottom: 30px;
+}
+#fourth{
+    margin-top: 50px;
+    text-align: center;
+    font-family: aleobold;
+    color: #3b3b3b;
+}
+#fourth h2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    font-weight: 300;
+}
+#fourth h2 span{
+    color: #3b3b3b;
+    font-family: aleobold;
+    font-size: 90%;
+    margin-right: 20px;
+    letter-spacing: 1px;
+}
+#fourth h2:after {
+    background: #e5e3e3;
+    height: 1px;
+    flex: 1;
+    content: '';
+}
+#fourth img{
+    width: 100%;
+}
+footer{
+    background-color: #3b3b3b;
+    color:#ececec;
+    text-align: center;
+    padding: 10px;
+    color: #ebebeb;
+    font-family: aleolight;
+}
+footer section{
+    margin: 10px;
+}
+span{
+    font-family: aleobold;
+    color: white;
+}
+#slider2 .flex-control-nav {
+    text-align: center;
+    width: 100%;
+    bottom: -330%;
+}
+#preloader{
+   position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    text-align: center;
+    padding-top: 200px;
+}
+
+path{
+    
+            stroke-width:5px;
+            stroke: #233337;
+            fill:none;
+            stroke-dasharray:870;
+            animation: animacija 10s infinite;
+        }
+        rect{
+           stroke: #233337;
+            stroke-dasharray:2100;
+            animation: animacija1 10s infinite;
+        }
+        .slovoa{
+            stroke-dasharray:680;
+            animation: animacija2 10s infinite;
+        }
+       
+        @keyframes animacija2{
+            0%{
+                stroke-dashoffset:100;
+            }
+            50%{
+                stroke-dashoffset:680;
+            }
+            100%{
+                stroke-dashoffset:100;
+            }
+        }
+        @keyframes animacija1{
+            0%{
+                stroke-dashoffset:320;
+            }
+            50%{
+                stroke-dashoffset:2100;
+            }
+            100%{
+                stroke-dashoffset:320;
+            }
+        }
+        @keyframes animacija{
+            0%{
+                stroke-dashoffset:100;
+            }
+            50%{
+                stroke-dashoffset:870;
+            }
+            100%{
+                stroke-dashoffset:100;
+            }
+        }
+@media screen and (min-width:480px){
+    #hero-one h4, #hero-two h4 {
+        font-size: 100%;
+        width: 500px;
+    }
+    #two-a, #two-b, #two-c, #two-d{
+        margin-bottom: 0;
+    }
+    #two-a, #two-c{
+        float: left;
+        width: 44%;
+        text-align: left;
+    }
+    #two-b{
+        margin-top: 75px;
+    }
+    #two-b, #two-d{
+        float: right;
+        width: 44%;
+        text-align: left;
+    }
+    #two-a>p, #two-b>p, #two-c>p, #two-d>p{
+        float: right;
+    }
+    .article{
+        float: left;
+        width: 60%;
+    }
+    
+    #load{
+        clear: both;
+        margin: 20px 0 200px 0;
+        text-align: center;
+    }
+    #dish{
+        text-align: center;
+        display: inline-block;
+        width: 44%;
+    }
+    #three p:nth-child(3){
+        display: inline-block;
+    }
+    #three p:nth-child(4){
+        display: inline-block;
+        margin-top: 30px;
+    }
+    #dish .stars{
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+    #three>img{
+        cursor: pointer;
+    }
+    #fourth{
+        margin: 190px 0;
+        overflow: auto;
+        text-align: left;
+    }
+    #fourth h2, #three h2{
+        margin-left: 10px;
+        width: 40%;
+    }
+    #fourth img{
+        width: 33%;
+        float: left;
+    }
+    
+    #fourth img:nth-child(2){
+        float: left;
+    }
+    #slider2 .flex-control-nav {
+        left: 75%;
+        width: 20%;
+        top: -7%;
+    }
+}
+@media screen and (min-width:960px){
+    header, #two, #three, #fourth, #content {
+        width: 82%;
+        margin: 0 auto;
+    }
+    header{
+        height: 110px;
+    }
+    nav{
+        float: right;
+    }
+    nav a{
+        float: left;
+        padding: 0;
+        margin: 50px 22px;
+        text-decoration: none;
+        color: #3b3b3b;
+        letter-spacing: 1px;
+    }
+    nav a:last-child{
+        margin-right:0;
+    }
+    nav a:hover{
+        color:#f34949;
+        background-color: white;
+    }
+    #navigation{
+        display: none;
+    }
+    #navi{
+        display: block;
+}
+    #hero-one{
+        background-image: url("../img/cover.jpg");
+        background-repeat: no-repeat;
+        text-align: center;
+        width: 100%;
+        background-size: cover;
+}
+    #hero-two{
+        background-image: url("../img/cover1.jpg");
+        background-repeat: no-repeat;
+        text-align: center;
+        width: 100%;
+        background-size: cover;
+    }
+    header img{
+        float: left;
+        margin-top: 30px;
+    }  
+    #hero-one, #hero-two{
+        height:570px;
+    }
+    #hero-one h1, #hero-two h1{
+        padding-top: 200px;
+        padding-bottom: 0;
+        font-size: 98px;
+        letter-spacing: -7px;
+    }
+    #hero-one h4, #hero-two h4{
+        font-size: 100%;
+        width: 500px;
+    }
+    #two-a, #two-c{
+        float: left;
+        width: 47%;
+        text-align: left;
+    }
+    #two-b, #two-d{
+        float: right;
+        width: 47%;
+        text-align: left;
+    }
+    .article{
+        text-align: left;
+        display: inline-block;
+        float: left;
+        width: 80%;
+        clear: both;
+        margin: 0 0 52px 0;
+        line-height: 1;
+        letter-spacing: 1px;
+    }
+    .article p:first-child{
+        width: 100%;
+    }
+    #two-a, #two-b, #two-c, #two-d{
+        margin-bottom: 60px;
+    }
+    #two-a .article:nth-child(10), 
+    #two-b .article:nth-child(10), 
+    #two-c .article:nth-child(10), 
+    #two-d .article:nth-child(10){
+        margin-bottom: 0;
+    }
+    #two-a>p, #two-c>p{
+        padding-right: 22px;
+    }
+    #two-b .article, #two-d .article{
+        padding-left: 22px;
+    }
+    #two-a>p, #two-b>p{
+        width:auto;
+        text-align: right;
+    }
+    #two-a p:first-child, 
+    #two-b p:first-child, 
+    #two-c p:first-child, 
+    #two-d p:first-child {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        font-weight: 300;
+    }
+    #two p:after {
+        background: #e5e3e3;
+        height: 1px;
+        flex: 1;
+        content: '';
+        margin-left: 5px;
+    }
+    #load{
+        clear: both;
+        margin: 25px 0 190px 0;
+        display: inline-block;
+        text-align: center;
+        background-color:#fff;
+    }
+    #load p{
+        border-right: 1px solid #b7b7b7;
+        color: #b7b7b7;
+    }
+    #load:hover{
+        background-color: #f34949;
+    }
+    #three h2{
+        float: left;
+        width: 40%;
+        margin-bottom: 80px;
+        margin-left: 0;
+    }
+    #three section>img{
+        width: 100%;
+    }
+    #three>img{
+        float: right;
+        padding: 5px;
+    }
+    #three img:nth-child(2){
+        margin-right: 0;
+    }
+    #dish{
+        display: inline-block;
+        width: 20%;
+        text-align: center;
+        margin-right: 5%;
+        margin-bottom: 0;
+    }
+    #dish:last-child{
+        margin-right: 0;
+    }
+    #three p:nth-child(3){
+        float: left;
+    }
+    #three p:nth-child(4){
+        float: right;
+    }
+    #dish .stars{
+        float: left;
+    }
+    #fourth{
+        text-align: left;
+        clear: both;
+    }
+    .clear{
+        clear: both;
+    }
+    #fourth img{
+        width: 33%;
+        float: left;
+        cursor: pointer;
+    }
+    #fourth img:hover{
+        opacity: 0.8;
+    }
+    #fourth img:nth-child(2){
+        float: left;
+    }
+    #fourth h2{
+        margin: 190px 0 80px 0;
+    }
+    footer section{
+        margin: 75px 0;
+        width: 21%;
+        text-align: left;
+        display: inline-block;
+        vertical-align:text-top;
+        line-height: 1.9;
+        margin-right: 50px;
+        letter-spacing: 1px;
+    }
+    #f3{
+        line-height: 2.2;
+    }
+    footer section:last-child{
+        margin-right: 0;
+        font-size: 90%;
+        letter-spacing: 0.5px;
+    }
+    footer{
+        margin-top:200px;        
+    }
+    #slider2 .flex-control-nav {
+        left: 82%;
+        width: 20%;
+        top: -30%;
+    }
+}

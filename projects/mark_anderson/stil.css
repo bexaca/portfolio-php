@@ -1,0 +1,342 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: font;
+    src: url(fonts/Khand-Medium.ttf);
+}
+h2, h1, nav a {
+    font-family: font;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+header, #baner, footer, #jedan, #dva, #tri, #cetiri {
+	overflow:auto;
+}
+header {
+    background-color: #222;
+    color: #9d9d9d;
+    padding: 20px 0 15px 0;
+	text-align: center;
+}
+header h1 a {
+	float: none;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 34px;
+	font-weight: normal;
+	color: #9d9d9d;
+}
+nav {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 0;
+	float: none;
+	font-size: 24px;
+}
+nav a {
+	border-top: 1px solid #898989;
+	display: block;
+	padding: 10px 0;
+	margin-left: 0;
+	color: #9d9d9d;
+	text-decoration: none;
+}
+nav a:hover {
+	background-color: #898989;
+	color:white;
+    text-decoration: underline;
+}
+nav a:last-child {
+	border-bottom: 1px solid #898989;
+}
+
+/* DOPUNITI BANER!!! */
+#baner {
+	overflow:auto;
+    background:url(images/i1.jpg) no-repeat left top;
+	background-size: cover;
+    color: white;
+    text-align: center;
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+}
+#baner h2 {
+    font-size: 110px;
+    font-weight: normal;
+    margin-top: 250px;
+    line-height: 90px;
+}
+#baner p {
+    text-transform: uppercase;
+    font-size: 26px;
+}
+#jedan {
+    text-align: center;
+    padding: 80px 0;
+}
+#jedan img {
+    width: 200px;
+    border-radius: 100px;
+    border: 7px solid #222;
+}
+#jedan h2 {
+    color: #222;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+#jedan p {
+    color: #898989;
+    font-size: 14px;
+    margin: 0 10%;
+}
+#jedan p.zelena {
+    color: #1abc9c;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+#dva {
+    text-align: center;
+    color: #898989;
+    margin: 0 10%;
+    margin-bottom: 80px;
+}
+#dva h3 {
+    font-family: font;
+    font-weight: normal;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #222;
+}
+#dva p {
+    color: #898989;
+    font-size: 14px;
+    margin: 0 30px;
+}
+#dva img {
+    width: 50px;
+    margin-bottom: 25px;
+}
+#dva .clanak {
+    margin-bottom: 50px;
+}
+
+#tri {
+    background-color: #222;
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+}
+#tri h2 {
+	font-size: 50px;
+    font-weight: normal;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+#tri .radovi {
+    margin: 0 10%;
+}
+#tri .radovi img {
+    width: 100%;
+    padding: 2%;/*оvo je moguce zbog border-boxa*/
+}
+#cetiri {
+    background-color: #1abc9c;
+    padding: 50px 0;
+    text-align: center;
+}
+#cetiri h2 {
+	font-size: 50px;
+    font-weight: normal;
+    margin-bottom: 50px;
+    color: white;
+    text-transform: uppercase;
+}
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+form{
+    text-align: center;
+    color: aliceblue;
+    font-size: 20px;
+}
+form input, form textarea{
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+form input[type="text"]:focus, form input[type="email"]:focus, textarea:focus{
+    background-color: #222;
+    color: aliceblue;
+}
+form button{
+    border:1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.2s;
+    background-color: #1abc9c;
+    color: aliceblue;
+    margin-top: 20px;
+    font-size: 16px;
+}
+form button:hover{
+    background-color: white;
+    color: #1abc9c;
+    cursor: pointer;
+}
+/*RESPONSIVE*/
+[class*="col-"]{
+    float: left;
+}
+/*MOBILE*/
+.col-s-1{
+    width: 8.33%;
+}
+.col-s-2{
+    width: 16.66%;
+}
+.col-s-3{
+    width: 25%;
+}
+.col-s-4{
+    width: 33.33%;
+}
+.col-s-5{
+    width: 41.66%;
+}
+.col-s-6{
+    width: 50%;
+}
+.col-s-7{
+    width: 58.33%;
+}
+.col-s-8{
+    width: 66.66%;
+}
+.col-s-9{
+    width: 75%;
+}
+.col-s-10{
+    width: 83.33%;
+}
+.col-s-11{
+    width: 91.66%;
+}
+.col-s-12{
+    width: 100%;
+}
+/*TABLET*/
+@media screen and (min-width:600px){
+    .col-m-1{
+    width: 8.33%;
+}
+.col-m-2{
+    width: 16.66%;
+}
+.col-m-3{
+    width: 25%;
+}
+.col-m-4{
+    width: 33.33%;
+}
+.col-m-5{
+    width: 41.66%;
+}
+.col-m-6{
+    width: 50%;
+}
+.col-m-7{
+    width: 58.33%;
+}
+.col-m-8{
+    width: 66.66%;
+}
+.col-m-9{
+    width: 75%;
+}
+.col-m-10{
+    width: 83.33%;
+}
+.col-m-11{
+    width: 91.66%;
+}
+.col-m-12{
+    width: 100%;
+}
+    header h1 a{
+        float: left;
+        margin-left: 10%;
+    }
+    nav{
+        float: right;
+        margin-right: 10%;
+        margin-top: 10px;
+    }
+    nav a{
+        display: inline-block;
+        margin-left: 20px;
+        border: none;
+    }
+    nav a:last-child{
+        border-bottom: none;
+    }
+    nav a:hover{
+        background-color: transparent;
+    }
+    
+}
+@media screen and (min-width:768px){
+    .col-1{
+    width: 8.33%;
+}
+.col-2{
+    width: 16.66%;
+}
+.col-3{
+    width: 25%;
+}
+.col-4{
+    width: 33.33%;
+}
+.col-5{
+    width: 41.66%;
+}
+.col-6{
+    width: 50%;
+}
+.col-7{
+    width: 58.33%;
+}
+.col-8{
+    width: 66.66%;
+}
+.col-9{
+    width: 75%;
+}
+.col-10{
+    width: 83.33%;
+}
+.col-11{
+    width: 91.66%;
+}
+.col-12{
+    width: 100%;
+}
+}

@@ -1,0 +1,971 @@
+/*---------------------------------------------------FONTS------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'open_sansbold';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold-webfont.woff') format('woff'), url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'), url('../fonts/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('../fonts/OpenSans-Light-webfont.eot');
+    src: url('../fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Light-webfont.woff') format('woff'), url('../fonts/OpenSans-Light-webfont.ttf') format('truetype'), url('../fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular-webfont.woff') format('woff'), url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'), url('../fonts/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sanssemibold';
+    src: url('../fonts/OpenSans-Semibold-webfont.eot');
+    src: url('../fonts/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Semibold-webfont.woff') format('woff'), url('../fonts/OpenSans-Semibold-webfont.ttf') format('truetype'), url('../fonts/OpenSans-Semibold-webfont.svg#open_sanssemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*--------------------------------------------------- GENERAL ------------------------------------------------------------*/
+
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    width: 100%;
+    overflow: hidden;
+}
+
+.razmak {
+    margin-left: 20px;
+}
+
+.blue {
+    color: #568491;
+}
+
+.green {
+    color: #2abb9b;
+}
+
+.yellow {
+    color: #d9d790;
+}
+
+.red {
+    color: #ef5c54;
+}
+
+
+/*--------------------------------------------------- PRELOADER ------------------------------------------------------------*/
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f4;
+    z-index: 99999;
+}
+
+#status {
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    /* centers the loading animation horizontally one the screen */
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*--------------------------------------------------- PHONE ------------------------------------------------------------*/
+
+#paralax1 h2,
+#paralax2 h2,
+#paralax3 h2,
+#paralax4 h2 {
+    font-family: open_sansbold;
+    text-transform: uppercase;
+    color: #f4f4f4;
+    font-size: 40px;
+    padding: 20px;
+}
+
+
+/*--------------------------------------------------- HEADER ------------------------------------------------------------*/
+
+header {
+    background-color: #233337;
+    height: 50px;
+}
+
+.logo-mob {
+    margin-top: 12px;
+    margin-left: 30px;
+    float: left;
+    width: 50px;
+}
+
+.logo-desk {
+    visibility: hidden;
+    margin-top: 12px;
+    margin-left: 30px;
+    float: left;
+    width: 50px;
+}
+
+nav {
+    display: none;
+}
+
+
+/*--------------------------------------------------- HAMBURGER MENU ------------------------------------------------------------*/
+
+.overlay {
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(35, 51, 55, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+    font-family: open_sansregular;
+    text-transform: uppercase;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #f4f4f4;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay .closebtn {
+    padding: 0;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+#hamb {
+    width: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #f4f4f4;
+    font-family: open_sanslight;
+    float: right;
+    margin: 12px 30px 12px 0;
+    z-index: 99;
+}
+
+
+/*--------------------------------------------------- HERO-HEADER ------------------------------------------------------------*/
+
+.element {
+    height: 200px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    color: #f4f4f4;
+    font-family: open_sanslight;
+    opacity: 0.4;
+    font-size: 5px;
+    text-align: left;
+}
+
+#hero-header {
+    background-color: #212121;
+    height: 200px;
+    width: 100%;
+}
+
+#hero-header h1 {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 130%;
+    width: 80%;
+    position: absolute;
+    top: 85px;
+    color: #f4f4f4;
+    text-transform: capitalize;
+    font-family: open_sanslight;
+}
+
+#hero-header span {
+    font-family: open_sanssemibold;
+}
+
+
+/*--------------------------------------------------- PARALAX-1 ------------------------------------------------------------*/
+
+#paralax1 {
+    margin-top: 20px;
+    background-image: url('../img/parallax1.jpg');
+    height: 100%;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*--------------------------------------------------- SKILLS ------------------------------------------------------------*/
+
+#skills div {
+    padding: 20px;
+    color: #233337;
+}
+
+#skills div h3 {
+    font-family: open_sansbold;
+    text-transform: uppercase;
+}
+
+#skills div p {
+    font-family: open_sanslight;
+}
+
+
+/*--------------------------------------------------- PARALAX-2 ------------------------------------------------------------*/
+
+#paralax2 {
+    background-image: url('../img/parallax2.jpg');
+    height: 100%;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*--------------------------------------------------- WORK ------------------------------------------------------------*/
+
+.desktop-gallery {
+    display: none;
+}
+
+#gallery {
+    margin-top: 20px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+#gallery img {
+    float: left;
+    width: 100%;
+}
+
+
+/*--------------------------------------------------- PARALAX-3 ------------------------------------------------------------*/
+
+#paralax3 {
+    margin: 20px 0;
+    background-image: url('../img/parallax3.jpg');
+    height: 100%;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*--------------------------------------------------- ABOUT ------------------------------------------------------------*/
+
+#about {
+    background-image: url('../img/about.jpg');
+    height: 400px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#timeline {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#timeline #text img {
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+}
+
+#timeline #text p {
+    color: #f4f4f4;
+    font-family: open_sanslight;
+    font-size: 60%;
+    display: inline-block;
+    width: 29%;
+}
+
+#timeline #text p:nth-child(1),
+#timeline #text p:nth-child(3) {
+    max-width: 20%;
+    margin: 0 4% 0 -2%;
+}
+
+#timeline #text p:nth-child(2) {
+    max-width: 35%;
+    margin-right: 5%
+}
+
+#timeline #text p:nth-child(6) {
+    vertical-align: top;
+    max-width: 25%;
+    margin-left: 4%;
+}
+
+#timeline #text p:nth-child(5) {
+    margin-left: 6%;
+    max-width: 25%;
+}
+
+
+/*--------------------------------------------------- PARALAX-4 ------------------------------------------------------------*/
+
+#paralax4 {
+    margin-top: 20px;
+    background-image: url('../img/parallax4.jpg');
+    height: 100%;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*--------------------------------------------------- CONTACT ------------------------------------------------------------*/
+
+#contact {
+    margin: 20px 0 40px 0;
+}
+
+#contact div {
+    margin-bottom: 50px;
+}
+
+#contact h3 {
+    font-family: open_sansregular;
+    text-transform: capitalize;
+    color: #233337;
+    margin-bottom: 20px;
+}
+
+#contact img {
+    height: 30px;
+}
+
+#contact p {
+    font-family: open_sanslight;
+    color: #233337;
+    margin: 10px;
+    font-size: 90%;
+}
+
+#contact div p:nth-child(2) {
+    text-transform: capitalize;
+}
+
+
+/*--------------------------------------------------- INPUT FIELDS MADOKA ------------------------------------------------------------*/
+
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 1em;
+    max-width: 350px;
+    width: calc(100% - 3em);
+    vertical-align: top;
+}
+
+.input__field {
+    text-align: left;
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0 0 1% 0;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    background: #233337;
+    color: #233337;
+    font-family: open_sansregular;
+    font-size: 100%;
+    -webkit-appearance: none;
+    /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+    outline: none;
+}
+
+.input__label {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    color: #233337;
+    font-family: open_sanslight;
+    font-size: 50.25%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.input__label-content {
+    position: relative;
+    display: block;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.input__field--madoka {
+    transform: translate(-5%, 0%);
+    width: 90%;
+    background: transparent;
+    color: #233337;
+}
+
+.input__label--madoka {
+    transform: translate(-5%, 0%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #233337;
+    cursor: text;
+    font-size: 80%;
+}
+
+.input__label-content--madoka {
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.graphic--madoka {
+    -webkit-transform: scale3d(1, -1, 1);
+    transform: scale3d(1, -1, 1);
+    -webkit-transition: stroke-dashoffset 0.5s;
+    transition: stroke-dashoffset 0.5s;
+    pointer-events: none;
+    stroke: #7A7593;
+    stroke-width: 4px;
+    stroke-dasharray: 962;
+    stroke-dashoffset: 558;
+}
+
+.input__field--madoka:focus+.input__label--madoka,
+.input--filled .input__label--madoka {
+    cursor: default;
+    pointer-events: none;
+}
+
+.input__field--madoka:focus+.input__label--madoka .graphic--madoka,
+.input--filled .graphic--madoka {
+    stroke-dashoffset: 0;
+}
+
+.input__field--madoka:focus+.input__label--madoka .input__label-content--madoka,
+.input--filled .input__label-content--madoka {
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 2.5em, 0);
+    transform: scale3d(0.81, 0.81, 1) translate3d(0, -2.5em, 0);
+}
+
+#btnposalji {
+    margin: auto;
+    display: block;
+    background-color: #f4f4f4;
+    font-family: open_sansbold;
+    color: #233337;
+    border: 1.5px solid #233337;
+    padding: 5px 30px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 120%;
+}
+
+#btnposalji:hover {
+    background-color: #233337;
+    color: #f4f4f4;
+    border: 1.5px solid #233337;
+    transition: 0.5s;
+}
+
+footer{
+    background-color: #233337;
+    text-align: center;
+    height: 20px;
+    background-color: rgba(244, 244, 244, 0.95);
+        box-shadow: 0px 1px 5px #233337;
+}
+footer span{
+    font-family: open_sanslight;
+    color: #233337;
+    font-size: 14px;
+}
+
+.typed-cursor {
+    display: none;
+}
+
+
+/*--------------------------------------------------- THANK-YOU-PAGE ------------------------------------------------------------*/
+
+.thank_you:first-child {
+    margin: 50px 50px 0 50px;
+}
+
+.thank_you {
+    font-family: open_sansbold;
+    font-size: 100%;
+    color: #233337;
+    display: block;
+    text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
+}
+
+.thank_you_a {
+    vertical-align: middle;
+    font-family: open_sansbold;
+    font-size: 100%;
+    color: #233337;
+    text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
+    transition: 0.5s;
+    opacity: 1;
+    margin: 50px 50px 0 50px;
+}
+
+.thank_you_link a:hover {
+    transition: 0.5s;
+    opacity: 0.6;
+}
+
+.thank_you_link {
+    display: block;
+    text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
+}
+
+.thank_you_link:first-of-type {
+    margin-top: 50px;
+}
+
+
+/*---------------------------------------------------TABLET/PHONE------------------------------------------------------------*/
+
+@media screen and (min-width:550px) {
+    #hero-header h1 {
+        width: 40%;
+    }
+    #skills div p {
+        padding: 0 10%;
+    }
+    #gallery img {
+        float: left;
+        width: 50%;
+    }
+    #timeline {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+
+/*---------------------------------------------------TABLET------------------------------------------------------------*/
+
+@media screen and (min-width:785px) {
+    #timeline {
+        width: 80%;
+    }
+    .input:last-of-type {
+        max-width: 740px;
+    }
+    .effect-bubba {
+        float: left;
+        width: 33.3%;
+    }
+}
+
+/*--------------------------------------------------- DESKTOP ------------------------------------------------------------*/
+
+@media screen and (min-width:1024px) {
+    /*--------------------------------------------------- HEADER ------------------------------------------------------------*/
+    header {
+        height: 40px;
+        width: 100%;
+        background-color: rgba(244, 244, 244, 0);
+        z-index: 9999;
+        transition: background-color 500ms;
+        box-shadow: none;
+        background-color: rgba(244, 244, 244, 0.95);
+        box-shadow: 0px 1px 5px #233337;
+    }
+    #hamb {
+        display: none;
+    }
+    nav {
+        display: block;
+        float: right;
+        position: relative;
+        top: 25%;
+        transform: translateY(-50%);
+        height: 0;
+    }
+    nav a {
+        margin-right: 50px;
+        text-decoration: none;
+        color: #233337;
+        text-transform: uppercase;
+        font-family: open_sanslight;
+        font-size: 14px;
+        transition: color 500ms;
+    }
+    *,
+    *:after,
+    *::before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    nav a:hover,
+    nav a:focus {
+        outline: none;
+    }
+    .element {
+        height: 100%;
+        overflow: hidden;
+        padding-top: 0px;
+        font-size: 10px;
+    }
+    #hero-header {
+        height: 100vh;
+    }
+    #hero-header h1 {
+        font-size: 250%;
+        top: 45%;
+        width: 750px;
+    }
+    #hero-header span {
+        font-family: open_sanssemibold;
+    }
+    .cl-effect-1 a::before,
+    .cl-effect-1 a::after {
+        display: inline-block;
+        opacity: 0;
+        -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+        -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+        transition: transform 0.3s, opacity 0.2s;
+    }
+    .cl-effect-1 a::before {
+        margin-right: 10px;
+        content: '<';
+        -webkit-transform: translateX(20px);
+        -moz-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+    .cl-effect-1 a::after {
+        margin-left: 8px;
+        content: '/>';
+        -webkit-transform: translateX(-20px);
+        -moz-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+    .cl-effect-1 a:hover::before,
+    .cl-effect-1 a:hover::after,
+    .cl-effect-1 a:focus::before,
+    .cl-effect-1 a:focus::after {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+    /*--------------------------------------------------- PARALAX ------------------------------------------------------------*/
+    .paralax-outer1 {
+        position: relative;
+    }
+    .paralax-outer1::after {
+        bottom: 0px;
+        left: 0;
+        position: absolute;
+        border-bottom: solid 50px #f4f4f4;
+        border-right: 98vw solid rgba(0, 0, 0, 0);
+        content: '';
+    }
+    .paralax-outer2 {
+        position: relative;
+    }
+    .paralax-outer3 {
+        position: relative;
+    }
+    .paralax-outer3::after {
+        bottom: 0px;
+        left: 0;
+        position: absolute;
+        border-bottom: solid 40px #111b1d;
+        border-right: 98vw solid rgba(0, 0, 0, 0);
+        content: '';
+    }
+    .paralax-outer4 {
+        position: relative;
+    }
+    .paralax-outer4::after {
+        bottom: 0px;
+        left: 0;
+        position: absolute;
+        border-bottom: solid 60px #f4f4f4;
+        border-right: 98vw solid rgba(0, 0, 0, 0);
+        content: '';
+    }
+    #paralax1 {
+        margin-top: 0;
+        background-attachment: fixed;
+    }
+    #paralax2 {
+        margin: 0;
+        background-attachment: fixed;
+    }
+    #paralax3 {
+        margin: 0;
+        background-attachment: fixed;
+        backface-visibility: hidden;
+    }
+    #paralax4 {
+        margin: 0;
+        background-attachment: fixed;
+    }
+    #paralax1 h2,
+    #paralax2 h2,
+    #paralax3 h2,
+    #paralax4 h2 {
+        font-size: 100px;
+        padding: 50px;
+    }
+    /*--------------------------------------------------- SKILLS ------------------------------------------------------------*/
+    #skills {
+        height: 500px;
+    }
+    #skills div {
+        position: relative;
+        top: 30%;
+        display: inline-block;
+        width: 300px;
+        padding: 0;
+        margin: 0;
+    }
+    #skills h3 {
+        margin: 10px;
+    }
+    /*--------------------------------------------------- GALLERY ------------------------------------------------------------*/
+    .mob-tablet-gallery {
+        display: none;
+    }
+    .desktop-gallery {
+        display: block;
+    }
+    figure.effect-bubba {
+        font-family: open_sanssemibold;
+        background-color: #233337;
+    }
+    figure.effect-bubba img {
+        opacity: 1;
+        -webkit-transition: opacity 0.35s;
+        transition: opacity 0.35s;
+    }
+    figure.effect-bubba:hover img {
+        opacity: 0.4;
+    }
+    figure.effect-bubba figcaption::before,
+    figure.effect-bubba figcaption::after {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        bottom: 30px;
+        left: 30px;
+        content: '';
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+    }
+    figure.effect-bubba figcaption::before {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        -webkit-transform: scale(0, 1);
+        transform: scale(0, 1);
+    }
+    figure.effect-bubba figcaption::after {
+        border-right: 1px solid #fff;
+        border-left: 1px solid #fff;
+        -webkit-transform: scale(1, 0);
+        transform: scale(1, 0);
+    }
+    figure.effect-bubba h2 {
+        padding-top: 30%;
+        opacity: 0;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+        transition: opacity 0.35s, transform 0.35s;
+    }
+    figure.effect-bubba p {
+        font-size: 64%;
+        font-family: open_sanslight;
+        padding: 20px 2.5em 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: translate3d(0, 20px, 0);
+        transform: translate3d(0, 20px, 0);
+    }
+    figure.effect-bubba p:last-of-type {
+        padding: 0 2.5em;
+        font-family: open_sansregular;
+    }
+    figure.effect-bubba a {
+        color: #f4f4f4;
+    }
+    figure.effect-bubba:hover figcaption::before,
+    figure.effect-bubba:hover figcaption::after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    figure.effect-bubba:hover h2,
+    figure.effect-bubba:hover p {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    figure {
+        position: relative;
+        float: left;
+        overflow: hidden;
+        width: 48%;
+        text-align: center;
+        cursor: pointer;
+    }
+    figure img {
+        position: relative;
+        display: block;
+        min-height: 100%;
+        max-width: 100%;
+    }
+    figure figcaption {
+        padding: 2em;
+        color: #f4f4f4;
+        text-transform: uppercase;
+        font-size: 1.25em;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    figure figcaption::before,
+    figure figcaption::after {
+        pointer-events: none;
+    }
+    figure figcaption,
+    figure figcaption a.take__a__look {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    figure{
+        cursor: default;
+    }
+    figcaption a{
+        transition: 0.5s;
+        font-size: 16px;
+    }
+    figcaption a:hover{
+        opacity: 0.8;
+        transition: 0.5s;
+    }
+    #gallery {
+        margin: 0;
+    }
+    .effect-bubba {
+        float: left;
+        width: 33.33%;
+    }
+    #gallery img {
+        width: 100%;
+        backface-visibility: hidden;
+    }
+    /*--------------------------------------------------- ABOUT ------------------------------------------------------------*/
+    #about {
+        height: 700px;
+    }
+    #timeline #text p {
+        font-size: 100%;
+    }
+    /*-------------------------------------------------- THANK YOU --------------------------------------------------------------*/
+    .thank_you {
+        font-size: 180%;
+    }
+    .thank_you_a {
+        font-size: 180%;
+    }
+}
+
+
+/*--------------------------------------------------- BIGGER DESKTOP ------------------------------------------------------------*/
+
+@media screen and (min-width:1440px) {
+    #about {
+        min-height: 900px;
+    }
+    #timeline {
+        width: 70%;
+    }
+    form {
+        width: 825px;
+        margin: auto;
+    }
+}

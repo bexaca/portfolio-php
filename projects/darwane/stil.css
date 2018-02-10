@@ -1,0 +1,278 @@
+/* CSS Document */
+
+* {
+	margin: 0; 
+	padding:0;
+}
+
+@font-face {
+	font-family: font1;
+	src: url(fonts/BebasNeue.otf);
+}
+
+.clear {
+	clear: both;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666;
+}
+
+p {
+	margin: 20px 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper {
+	background-color: rgba(25, 29, 33, 0.95);
+}
+
+.wrapper:first-child {
+	position: fixed; /*Da bi ostao vidljiv prilikom skrolovanja*/
+	left:0;
+	top:0;
+	width:100%; /*mora width - bez toga se skupi na 960px jer je koriscen position*/ 
+	height: 100px;
+}
+
+main, header, footer {
+	width: 960px;
+	margin: 0 auto;
+}
+	
+header section {
+	float: left;
+}
+
+header h1 {
+	font-family: font1;
+	font-size: 50px;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding-top: 20px;
+}
+
+header h1 a {
+	color: white;
+}
+
+header nav {
+	float:right;
+	padding-top: 40px;
+}
+	
+header nav a {
+	font-size: 18px;
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-right: 15px;
+	padding: 40px 10px;
+	transition: 0.5s;
+}
+
+header nav a:last-child, section#jedan article.margina, #dva img:nth-child(4), #dva img:nth-child(7) {
+	margin-right: 0; /*Skidanje margine sa poslednjeg deteta u svakom section-u, dodavati kako se naidje na koji element*/
+}
+
+header nav a:hover {
+	color: #666;
+	background-color: white;
+}
+	
+main>section {
+	margin-bottom: 60px;
+}
+	
+main section#jedan {
+	margin-top: 100px; /*Ako je manje podvuce se po header zbog fiksne pozicije */}
+
+section#jedan img.cover {
+	margin-right: 0;
+	padding-bottom: 40px;
+}
+
+section h2 {
+	color: #191d21;
+	margin: 120px 0 60px 0;
+	text-transform: uppercase;
+	font-family: font1;
+	font-size: 40px;
+	font-weight: normal;
+	border-bottom: 2px solid #191d21;
+}
+
+section#jedan article {
+	margin-top: 40px;
+	margin-right: 30px; /*Dodati u section#jedan img.cover margin-right: 0;*/
+	float: left;
+	text-align: center;
+}
+
+section#jedan article p {
+	font-family: font1;
+	font-weight: normal;
+	font-size: 20px;
+}
+
+span.name {
+	color: #191d21;
+}
+
+img.trecina {
+	float: left;
+	margin-right: 30px;
+	margin-bottom: 30px;
+}
+
+footer {
+	height: 70px;
+	padding-top: 15px;
+	text-align: center;
+}
+
+/* FORMA */
+
+form {
+    text-align: center;
+    font-size: 18px;
+}
+
+form label {
+	font-family: font1;
+	font-size: 22px;
+}
+
+form input, form textarea {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #666;
+    width: 60%;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+form button {
+	background-color: rgba(25, 29, 33, 0.95);
+	color: white;
+	font-family: font1;
+	font-size: 20px;
+	letter-spacing: 1px;
+	padding: 10px 20px;
+	margin-top: 20px;
+	border: 1px solid #191d21;
+	cursor: pointer;
+}
+
+form button:hover {
+	background-color: white;
+	color: #666;
+	border: 1px solid #666;
+	transition: 0.5s;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 960px){
+	main, header, footer, header section, header nav {
+		width: 100%;
+		float:none;}
+		
+	.wrapper:first-child {
+		height: 180px;
+		text-align: center;
+	}
+
+	main section#jedan {
+		margin-top: 180px;
+	}
+
+	section#jedan img.cover {
+		width: 100%;
+	}
+
+	section h2 {
+		margin: 120px 10px 60px 10px;
+	}
+
+	section#jedan p {
+		margin: 20px 10px;
+	}
+
+	section#jedan article {
+		margin-right: 0;
+		float: none;
+	}
+
+	section#jedan article img {
+		width: 60%;
+	}
+
+
+	img.trecina {
+		width: 30%;
+		margin: 1.5%;
+	}
+
+	section#tri p {
+		margin: 20px 10px;
+	}
+
+	form input, form textarea {  
+   	 	width: 90%;   
+	}
+
+}
+
+
+@media screen and (max-width: 480px){
+	main, header, footer, header section, header nav {
+		width: 100%;
+		float:none;}
+		
+	.wrapper:first-child {
+		height: 330px;
+		text-align: center;
+	}
+
+	header nav a {
+		display: block;
+		margin-right: 0;
+		padding: 10px 0;
+		transition: 0.5s;
+	}
+
+	main section#jedan {
+		margin-top: 330px;
+	}
+
+	section h2 {
+		margin: 80px 10px 60px 10px;
+	}
+
+	section#jedan article img {
+		width: 97%;
+	}
+
+
+	img.trecina {
+		width: 97%;
+		margin: 1.5%;
+	}
+
+	section#tri p {
+		margin: 20px 10px;
+	}
+
+	form input, form textarea {  
+   	 	width: 90%;   
+	}
+
+}
