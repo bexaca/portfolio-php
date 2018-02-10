@@ -29,36 +29,35 @@
                 <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
                     <a href="/">index</a>
                 <?php }?>
-                <a href="/skills.html">skills</a>
-                <a href="/work.html">work</a>
-                <a href="/about.html">about</a>
-                <a href="/contact.html">contact</a>
+                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                    <a href="/skills.html">skills</a>
+                <?php }?>
+                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                    <a href="/work.html">work</a>
+                <?php }?>
+                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                    <a href="/about.html">about</a>
+                <?php }?>
+                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                    <a href="/contact.html">contact</a>
+                <?php }?>
             </div>
-
-                <div class="navigation">
-                    <ul class="lista1">
-						<?php error_reporting(0); if($_SESSION['uloga']=="" ){?>
-						<li><a href="login.php">LOG IN</a></li><?php }?>
-						<?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-						<li><a href="usluge.php">USLUGE</a></li><?php }?>
-						<?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>	
-						<li><a href="galerija.php">GALERIJA</a></li><?php }?>
-						<?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
-                        <li><a href="kontakt.php">KONTAKT</a></li><?php }?>
-						<?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
-                        <li><a href="about.php">O AUTORU</a></li><?php }?>
-						<?php if($_SESSION['uloga']=="admin"){?>
-						<li><a href="panel.php">ADMIN PANEL</a></li><?php }?>
-						<?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
-						<li><a href="login.php">LOG OUT</a></li><?php }?>
-
-        </div>
         <nav class="cl-effect-1">
-            <a class="header_nav-link nav_color" href="/">index</a>
-            <a class="header_nav-link nav_color" href="/skills.html">skills</a>
-            <a class="header_nav-link nav_color" href="/work.html">work</a>
-            <a class="header_nav-link nav_color" href="/about.html">about</a>
-            <a class="header_nav-link nav_color" href="/contact.html">contact</a>
+            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                <a class="header_nav-link nav_color" href="/">index</a>
+            <?php }?>
+            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                <a class="header_nav-link nav_color" href="/skills.html">skills</a>
+            <?php }?>
+            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                <a class="header_nav-link nav_color" href="/work.html">work</a>
+            <?php }?>
+            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                <a class="header_nav-link nav_color" href="/about.html">about</a>
+            <?php }?>
+            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
+                <a class="header_nav-link nav_color" href="/contact.html">contact</a>
+            <?php }?>
         </nav>
     </header>
     <section id="hero-header" >
