@@ -44,6 +44,9 @@
             </div>
         </div>
         <nav class="cl-effect-1">
+            <?php error_reporting(0); if($_SESSION['uloga']=="" ){?>
+                <a href="login.php">log in</a></li>
+            <?php }?>
             <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
                 <a class="header_nav-link nav_color" href="/">index</a>
             <?php }?>
