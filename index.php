@@ -42,6 +42,7 @@
                     <a href="/contact.html">contact</a>
                 <?php }?>
             </div>
+        </div>
         <nav class="cl-effect-1">
             <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
                 <a class="header_nav-link nav_color" href="/">index</a>
