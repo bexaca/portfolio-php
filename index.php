@@ -40,6 +40,9 @@
                 <?php }?>
                 <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
                     <a href="/contact.html">contact</a>
+                    <?php }?>
+                <?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
+                    <a href="login.php">log out</a>
                 <?php }?>
             </div>
         </div>
@@ -61,6 +64,9 @@
             <?php }?>
             <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
                 <a class="header_nav-link nav_color" href="/contact.html">contact</a>
+            <?php }?>
+            <?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
+                <a class="header_nav-link nav_color" href="login.php">log out</a>
             <?php }?>
         </nav>
     </header>
