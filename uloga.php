@@ -10,7 +10,7 @@ if(isset($_SESSION['uloga'])){
 			include('index.php');
 		}
 		else{
-			echo 'Nemate pravo pristupa ovoj stranici jer niste ulogovani.<br><a href="login.php">Logovanje</a>';
+			echo 'Nemate pravo pristupa ovoj stranici jer niste ulogovani.<a href="login.php">Logovanje</a>';
 		}
 	}
 

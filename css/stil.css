@@ -529,7 +529,7 @@ body{
     width: 100%;
     margin-top: 350px;
 }
-#btnposalji{
+.btnposalji{
     color: #e6e6e6;
     background: #231f20;
     border: 1px solid #fff;
@@ -539,8 +539,8 @@ body{
     transition-duration: 0.5s;
     font-family: 'Source Sans Pro', sans-serif;
 }
-#btnposalji:hover,
-#btnposalji:active{
+.btnposalji:hover,
+.btnposalji:active{
     color: #231f20;
     background: #fff;
     -webkit-transition-duration: 0.5s;

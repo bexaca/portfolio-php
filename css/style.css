@@ -395,6 +395,25 @@ nav {
     text-transform: capitalize;
 }
 
+/*--------------------------------------------------- LOGIN / ADMIN ------------------------------------------------------------*/
+
+.loginf{
+    margin-bottom: 50px;
+}
+
+.loginf h1{
+    margin: 5px;
+}
+
+.notsameline1 {
+    display: block;
+    font-size: 1.2em;
+    padding: 0.25em;
+    width: 100%;
+    margin-bottom: 1em;
+    border-radius: 3px;
+    border: 1px solid #BABABA;
+  }
 
 /*--------------------------------------------------- INPUT FIELDS MADOKA ------------------------------------------------------------*/
 
@@ -518,7 +537,7 @@ textarea {
     transform: scale3d(0.81, 0.81, 1) translate3d(0, -2.5em, 0);
 }
 
-#btnposalji {
+.btnposalji {
     margin: auto;
     display: block;
     background-color: #f4f4f4;
@@ -531,7 +550,7 @@ textarea {
     font-size: 120%;
 }
 
-#btnposalji:hover {
+.btnposalji:hover {
     background-color: #233337;
     color: #f4f4f4;
     border: 1.5px solid #233337;
@@ -742,14 +761,6 @@ footer span{
     }
     .paralax-outer3 {
         position: relative;
-    }
-    .paralax-outer3::after {
-        bottom: 0px;
-        left: 0;
-        position: absolute;
-        border-bottom: solid 40px #111b1d;
-        border-right: 98vw solid rgba(0, 0, 0, 0);
-        content: '';
     }
     .paralax-outer4 {
         position: relative;

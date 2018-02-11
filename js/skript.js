@@ -47,15 +47,29 @@ $('a[href*=\\#]').on('click', function (event) {
     }, 500);
 });
 
-$(document).ready(function () {
-    $("html").niceScroll();
-});
-
-$("#thisdiv").niceScroll({
-    scrollspeed: 80,
-    mousescrollstep: 40,
-});
-
 $( '.overlay-content a' ).on("click", function(){
     $("#myNav").css("width", "0%");
 });
+
+var da=0;
+var ne=0;
+var output = new Array();
+function writeText (form) {
+   if(document.getElementById('da').checked || document.getElementById('ne').checked) {
+     if(document.getElementById('da').checked) {
+  da=da+1;
+  document.getElementById('da1').innerHTML=da;
+}else   {
+    
+     document.getElementById('da1').innerHTML=da;
+    
+    }
+    
+     if(document.getElementById('ne').checked) {
+  ne=ne+1;
+  document.getElementById('ne1').innerHTML=ne;
+}else   {
+     document.getElementById('da1').innerHTML=da;
+    }
+   }
+}

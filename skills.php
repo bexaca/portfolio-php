@@ -1,5 +1,12 @@
 <!doctype html>
 
+<?php
+error_reporting(0);
+@session_start();
+$_SESSION['admin'];
+$_SESSION['korisnik'];
+?>
+
 <html>
 
 <head>
@@ -11,12 +18,13 @@
     <meta name="keywords" content="" />
     <link rel="stylesheet" type="text/css" href="css/notify.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    
 </head>
 
 <body>
     <div id="preloader">
         <div id="status">
-            <h1>INDEX</h1>
+            <h1>SKILLS</h1>
         </div>
     </div>
     <header id="header_nav" >
@@ -77,16 +85,29 @@
             <?php }?>
         </nav>
     </header>
-    <section id="hero-header" >
-        <div class="element"></div>
-        <?php 
-					include('konekcija.php');
-					$heroText = "SELECT * FROM hero"; 
-					$rezultat=mysql_query($heroText);
-					$obj=mysql_fetch_assoc($rezultat);
-				?>
-        <h1><?php echo $obj['text'] ?></h1>
+    <section class="paralax-outer1">
+        <div id="paralax1">
+            <h2>skills</h2>
+        </div>
     </section>
+    <section id="skills">
+        <div>
+            <img src="img/design.svg" alt="design"/>
+            <h3>web design</h3>
+            <p>From simple wireframes through to creating a modern fresh website design reflecting your brand, I can help.</p>
+        </div>
+        <div >
+            <img src="img/development.svg" alt="development"/>
+            <h3>web development</h3>
+            <p>From basic scratch through to creating a mock up high-level prototyping. I can bring your design to life!</p>
+        </div>
+        <div>
+            <img src="img/photography.svg" alt="photography"/>
+            <h3>photography</h3>
+            <p>From eye to frame. Every photo that needs to be on website is not a problem. I convert 3D world to 2D picture in a snap.</p>
+        </div>
+    </section>
+    
     <footer>
         <span>&copy; 2018 Isidora Nikolic, Nova Pazova, Serbia <a href="http://www.ict.edu.rs/">ICT Visoka skola</a></span>
     </footer>
@@ -94,6 +115,7 @@
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
 <script type="text/javascript" src="js/preloader.js"></script>
 <script type="text/javascript" src="js/skript.js"></script>
 <script type="text/javascript" src="js/classie.js"></script>
