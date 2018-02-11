@@ -148,8 +148,51 @@ error_reporting(0);
 error_reporting(0);
 	include('konekcija.php');
 		$hero=$_POST['hero'];
-		$sql="UPDATE hero SET text='$hero' WHERE id=1";
+		$sql="UPDATE site_text SET text='$hero' WHERE id=1";
 		if (isset($_POST['hero_change'])){
+			$rez = mysql_query($sql, $konekcija);
+        if(!$rez)
+        {
+          echo "Greska prilikom upisa podataka! ".mysql_error();
+        }
+        else
+        {
+          echo "<h3>Podaci su uspesno promenjeni!</h3>";
+        }
+	}
+?>
+
+<?php
+
+error_reporting(0);
+	include('konekcija.php');
+		$skill_id=$_POST['skill_id'];
+		$skill_image=$_POST['skill_image'];
+		$skill_heading=$_POST['skill_heading'];
+		$skill_text=$_POST['skill_text'];
+		$sql="UPDATE skills SET skill_image='$skill_image', skill_heading='$skill_heading', skill_text='$skill_text' WHERE id='$skill_id'";
+		if (isset($_POST['skill_change'])){
+			$rez = mysql_query($sql, $konekcija);
+        if(!$rez)
+        {
+          echo "Greska prilikom upisa podataka! ".mysql_error();
+        }
+        else
+        {
+          echo "<h3>Podaci su uspesno promenjeni!</h3>";
+        }
+	}
+?>
+
+<?php
+
+error_reporting(0);
+	include('konekcija.php');
+		$contact_location=$_POST['contact_location'];
+		$contact_phone=$_POST['contact_phone'];
+		$contact_email=$_POST['contact_email'];
+		$sql="UPDATE contact SET contact_location='$contact_location', contact_phone='$contact_phone', contact_email='$contact_email' WHERE id=1";
+		if (isset($_POST['contact_change'])){
 			$rez = mysql_query($sql, $konekcija);
         if(!$rez)
         {
@@ -280,8 +323,8 @@ error_reporting(0);
 					<input type="password"placeholder="Password" name="pass" class="notsameline1">
 					<input type="text" name="name"placeholder="First name" class="notsameline1">
 					<input type="text" name="surname" placeholder="Last name"class="notsameline1">
-					<input type="email" name="email"placeholder="Email" class="notsameline1"
-					<input type="submit" name="submit"  class="sblog btnposalji" value="Add">
+					<input type="email" name="email"placeholder="Email" class="notsameline1">
+					<input type="submit" name="submit"  class="sblog btnposalji" value="Add"/>
 				</form>
 				<h1>Delete user</h1>
 				<form action="panel.php" method="POST">
@@ -343,12 +386,79 @@ error_reporting(0);
 				<h1>Change hero header</h1>
 				<?php 
 					include('konekcija.php');
-					$heroText = "SELECT * FROM hero"; 
+					$heroText = "SELECT * FROM site_text WHERE id=1"; 
 					$rezultat=mysql_query($heroText);
 					$obj=mysql_fetch_assoc($rezultat);
 				?>
 				<input type="textarea" placeholder="Insert text" value="<?php echo $obj['text'] ?>" name="hero" class="notsameline1"> 
-				<input type="submit" name="hero_change" class="sblog btnposalji" value="Add">
+				<input type="submit" name="hero_change" class="sblog btnposalji" value="Change">
+			</form>
+		</div>
+
+		<div class="skills__change">
+		<div class="tabela">
+		<div style="width: max-content; margin:0 auto;">
+			<table border="1 px solid" style="background-color:darkslategrey;">
+				<tr>
+					<th>ID</th>
+					<th>Skill image</th>
+					<th>Skill heading</th>
+					<th>Skill text</th>
+				</tr>
+				<?php 
+        
+        $select_query="SELECT * FROM skills";
+        $rezultat=mysql_query($select_query);
+        while($red=mysql_fetch_array($rezultat)){ ?>
+                  <tr>
+					  <td><?php echo $red['id']; ?></td>
+					  <td><?php echo $red['skill_image']; ?></td>
+					  <td><?php echo $red['skill_heading']; ?></td>
+					  <td><?php echo $red['skill_text']; ?></td>
+					</tr>
+					<?php } ?>
+				</table>
+			</div>
+		</div>
+			<form name="skill" action="panel.php" method="POST">
+				<h1>Change skill</h1>
+				<input type="number" placeholder="Insert ID" name="skill_id" class="notsameline1"> 
+				<input type="text" placeholder="Insert URL" name="skill_image" class="notsameline1"> 
+				<input type="text" placeholder="Insert heading" name="skill_heading" class="notsameline1"> 
+				<input type="textarea" placeholder="Insert text" name="skill_text" class="notsameline1"> 
+				<input type="submit" name="skill_change" class="sblog btnposalji" value="Change">
+			</form>
+		</div>
+
+		<div class="contact__change">
+		<div class="tabela">
+		<div style="width: max-content; margin:0 auto;">
+			<table border="1 px solid" style="background-color:darkslategrey;">
+				<tr>
+					<th>Contact location</th>
+					<th>Contact phone</th>
+					<th>Contact email</th>
+				</tr>
+				<?php 
+        
+        $select_query="SELECT * FROM contact";
+        $rezultat=mysql_query($select_query);
+        while($red=mysql_fetch_array($rezultat)){ ?>
+                  <tr>
+					  <td><?php echo $red['contact_location']; ?></td>
+					  <td><?php echo $red['contact_phone']; ?></td>
+					  <td><?php echo $red['contact_email']; ?></td>
+					</tr>
+					<?php } ?>
+				</table>
+			</div>
+		</div>
+			<form name="skill" action="panel.php" method="POST">
+				<h1>Change skill</h1>
+				<input type="text" placeholder="Insert address" name="contact_location" class="notsameline1"> 
+				<input type="text" placeholder="Insert phone" name="contact_phone" class="notsameline1"> 
+				<input type="text" placeholder="Insert email" name="contact_email" class="notsameline1"> 
+				<input type="submit" name="contact_change" class="sblog btnposalji" value="Change">
 			</form>
 		</div>
 

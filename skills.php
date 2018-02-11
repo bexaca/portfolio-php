@@ -91,21 +91,20 @@ $_SESSION['korisnik'];
         </div>
     </section>
     <section id="skills">
-        <div>
-            <img src="img/design.svg" alt="design"/>
-            <h3>web design</h3>
-            <p>From simple wireframes through to creating a modern fresh website design reflecting your brand, I can help.</p>
-        </div>
-        <div >
-            <img src="img/development.svg" alt="development"/>
-            <h3>web development</h3>
-            <p>From basic scratch through to creating a mock up high-level prototyping. I can bring your design to life!</p>
-        </div>
-        <div>
-            <img src="img/photography.svg" alt="photography"/>
-            <h3>photography</h3>
-            <p>From eye to frame. Every photo that needs to be on website is not a problem. I convert 3D world to 2D picture in a snap.</p>
-        </div>
+
+        <?php
+            include("konekcija.php");
+            $query = "SELECT * FROM skills";
+            $rez = mysql_query($query) or die("Query nije izvrsen");
+            while($r = mysql_fetch_array($rez)){
+                echo "<div>
+                    <img src=\"".$r['skill_image']."\" alt=\"design\"/>
+                    <h3>".$r['skill_heading']."</h3>
+                    <p>".$r['skill_text']."</p>
+                </div>";
+            }
+        ?>
+
     </section>
     
     <footer>

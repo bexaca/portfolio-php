@@ -93,12 +93,19 @@ $_SESSION['korisnik'];
     <section id="contact">
         <h3>contact info</h3>
         <div>
-            <img src="img/location.svg" alt="location"/>
-            <p>milosa obilica 14, nova pazova</p>
-            <img src="img/phone.svg" alt="phone"/>
-            <p>+381 69 563 64 15</p>
-            <img src="img/mail.svg" alt="mail"/>
-            <p>isidora.nikolic.167.15@ict.edu.rs</p>
+        <?php
+            include("konekcija.php");
+            $query = "SELECT * FROM contact";
+            $rez = mysql_query($query) or die("Query nije izvrsen");
+            while($r = mysql_fetch_array($rez)){
+                echo "<img src=\"img/location.svg\" alt=\"location\"/>
+                <p>".$r['contact_location']."</p>
+                <img src=\"img/phone.svg\" alt=\"phone\"/>
+                <p>".$r['contact_phone']."</p>
+                <img src=\"img/mail.svg\" alt=\"mail\"/>
+                <p>".$r['contact_email']."</p>";
+            }
+        ?>
         </div>
         <section class="content bgcolor-4">
             <form action="contact-page.php" name="forma" method="post">

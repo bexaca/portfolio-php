@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2018 at 10:48 PM
+-- Generation Time: Feb 11, 2018 at 11:52 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -64,20 +64,22 @@ INSERT INTO `ankete` (`id_ankete`, `pitanje`, `aktivna`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hero`
+-- Table structure for table `contact`
 --
 
-CREATE TABLE `hero` (
+CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
-  `text` text COLLATE utf8_unicode_ci NOT NULL
+  `contact_location` text COLLATE utf8_unicode_ci NOT NULL,
+  `contact_phone` text COLLATE utf8_unicode_ci NOT NULL,
+  `contact_email` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `hero`
+-- Dumping data for table `contact`
 --
 
-INSERT INTO `hero` (`id`, `text`) VALUES
-(1, 'Hi, My Name Is Isidora And I Am Future Freelance Front-End Web Developer nrao');
+INSERT INTO `contact` (`id`, `contact_location`, `contact_phone`, `contact_email`) VALUES
+(1, 'Milosa Obilica 14, Nova Pazova', '+381 69 563 64 15', 'isidora.nikolic.167.15@ict.edu.rs');
 
 -- --------------------------------------------------------
 
@@ -199,6 +201,46 @@ INSERT INTO `rezultat` (`id_rezultat`, `id_ankete`, `id_odgovori`, `rezultat`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `site_text`
+--
+
+CREATE TABLE `site_text` (
+  `id` int(11) NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `site_text`
+--
+
+INSERT INTO `site_text` (`id`, `text`) VALUES
+(1, 'Hi, My Name Is Isidora And I Am Future Freelance Front-End Web Developer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills`
+--
+
+CREATE TABLE `skills` (
+  `id` int(11) NOT NULL,
+  `skill_image` text COLLATE utf8_unicode_ci NOT NULL,
+  `skill_heading` text COLLATE utf8_unicode_ci NOT NULL,
+  `skill_text` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`id`, `skill_image`, `skill_heading`, `skill_text`) VALUES
+(1, 'img/design.svg', 'web design', 'From simple wireframes through to creating a modern fresh website design reflecting your brand, I can help.'),
+(2, 'img/development.svg', 'web development', 'From basic scratch through to creating a mock up high-level prototyping. I can bring your design to life!'),
+(3, 'img/photography.svg', 'photography', 'From eye to frame. Every photo that needs to be on website is not a problem. I convert 3D world to 2D picture in a snap.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slika`
 --
 
@@ -254,9 +296,9 @@ ALTER TABLE `ankete`
   ADD PRIMARY KEY (`id_ankete`);
 
 --
--- Indexes for table `hero`
+-- Indexes for table `contact`
 --
-ALTER TABLE `hero`
+ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -276,6 +318,18 @@ ALTER TABLE `odgovori`
 --
 ALTER TABLE `rezultat`
   ADD PRIMARY KEY (`id_rezultat`);
+
+--
+-- Indexes for table `site_text`
+--
+ALTER TABLE `site_text`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `skills`
+--
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `slika`
@@ -300,10 +354,10 @@ ALTER TABLE `ankete`
   MODIFY `id_ankete` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `hero`
+-- AUTO_INCREMENT for table `contact`
 --
-ALTER TABLE `hero`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kontakt`
@@ -322,6 +376,18 @@ ALTER TABLE `odgovori`
 --
 ALTER TABLE `rezultat`
   MODIFY `id_rezultat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
+--
+-- AUTO_INCREMENT for table `site_text`
+--
+ALTER TABLE `site_text`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `skills`
+--
+ALTER TABLE `skills`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `slika`

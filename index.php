@@ -81,7 +81,7 @@
         <div class="element"></div>
         <?php 
 					include('konekcija.php');
-					$heroText = "SELECT * FROM hero"; 
+					$heroText = "SELECT * FROM site_text WHERE id=1"; 
 					$rezultat=mysql_query($heroText);
 					$obj=mysql_fetch_assoc($rezultat);
 				?>
