@@ -1,163 +1,141 @@
-<?php
-error_reporting(0);
-@session_start();
-$_SESSION['admin'];
-$_SESSION['korisnik'];
-?>
-
 <?php 
+	include "views/header.php";
+	if($user === NULL){
+		header("Location: ../login.php");
+	}
+	if($user != 'admin'){
+		header("Location: control.php?page=index");
+	}
 error_reporting(0);
-include('konekcija.php');
-$dugme_upis=$_POST['unesi'];
-$dugme_aktiviraj=$_POST['aktiviraj'];
-if(isset($dugme_upis)){
-	$pitanje=$_POST['pitanje'];
-	$odgovori=$_POST['odgovori'];
-	$niz_odgovori=explode(';',$odgovori);
-	$broj=count($niz_odgovori);
-	$upis_pitanje="INSERT INTO ankete VALUES ('','$pitanje',0)";
-	$izvrsi_upis_pitanje=mysql_query($upis_pitanje) or die ("Upit 2 nije izvrsen!".mysql_error());
-	$izvuciID="SELECT id_ankete FROM ankete WHERE pitanje='$pitanje'";
-	$izvrsi_izvuciID=mysql_query($izvuciID) or die ("Upit 3 nije izvrsen".mysql_error());
-	$red=mysql_fetch_array($izvrsi_izvuciID);
-	$id_ankete=$red['id_ankete'];
-	for($i=0;$i<$broj;$i++){
-		$upis_odgovora="INSERT INTO odgovori VALUES ('','$id_ankete','$niz_odgovori[$i]')";
-		$upisi=mysql_query($upis_odgovora) or die ("Upit  nije izvsen!".mysql_error());
-		$id_odgovor="SELECT id_odgovori FROM odgovori WHERE id_ankete='$id_ankete'AND odgovori='$niz_odgovori[$i]'";
-		$uzmi_id_odgovor=mysql_query($id_odgovor) or die ("Upis 4 nije izvrsen!".mysql_error());
-		$niz_id_odgovor=mysql_fetch_array($uzmi_id_odgovor);
-		$id_odgovor=$niz_id_odgovor[0];
-		$upis_rezultati="INSERT INTO rezultat VALUES ('','$id_ankete','$id_odgovor','0')";
-		$upis=mysql_query($upis_rezultati) or die ("Upit 5 nije izvrsen!".mysql_error());
-	}
-	if($upis){
-		echo 'Anketa je upisana';
-	}
-}
-if(isset($dugme_aktiviraj)){
-	$aktivnost=$_POST['aktivnost_ankete'];
-	$aktiviraj="UPDATE ankete SET aktivna=1 WHERE id_ankete=".$aktivnost;
-	$deaktiviraj="UPDATE ankete SET aktivna=0 WHERE id_ankete<>".$aktivnost;
-	$izvrsi_deaktiviraj=mysql_query($deaktiviraj)or die("Upit 6 nije izvrsen!".mysql_error());
-	$izvrsi_aktiviraj=mysql_query ($aktiviraj) or die ("Upit 7 nije izvrsen!".mysql_error());
-	if($izvrsi_aktiviraj){
-		echo 'Anketa je uspesno aktivirana';
-	}
-}
-mysql_close($konekcija);
+	
 ?>
 <?php
-error_reporting(0);
-	include('konekcija.php');
+@session_start();
+	include "php/konekcija.php";
 		$ime=$_POST['ime1'];
         $id=$_POST['id1'];
 		$prezime=$_POST['prezime1'];
 		$username=$_POST['username1'];
 		$email=$_POST['email1'];
 		$password=$_POST['password1'];
-		$sql2="UPDATE users  SET ime='$ime',username='$username', password='$password', prezime='$prezime', email='$email' WHERE id='$id'";
-	if (isset($_POST['update'])){
-			$rez_upis2 = mysql_query($sql2, $konekcija);
-        if(!$rez_upis2)
-        {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
-        }
-        else
-        {
-          echo "<h3>Podaci su uspesno promenjeni!</h3>";
-        }
-	}
+
+		$errors=[];
+
+		$upit_update="UPDATE users  SET ime=:ime, username=:username, password=:password, prezime=:prezime, email=:email WHERE id=:id";
+		$priprema=$konekcija->prepare($upit_update);
+		$priprema->bindParam(":ime", $ime);
+		$priprema->bindParam(":username", $username);
+		$priprema->bindParam(":password", $password);
+		$priprema->bindParam(":prezime", $prezime);
+		$priprema->bindParam(":email", $email);
+		$priprema->bindParam(":id", $id);
+
+		$rezultat=$priprema->execute();
 ?>
 <?php
 error_reporting(0);
-	include('konekcija.php');
+	include('php/konekcija.php');
 		$id=$_POST['id'];
-		$sql1="DELETE from users WHERE id=$id";
+		$sql1="DELETE from users WHERE id=:id";
+		$stmt=$konekcija->prepare($sql1);
+		$stmt->bindParam(":id",$id);
+
 	if (isset($_POST['delete'])){
-			$rez_upis1 = mysql_query($sql1, $konekcija);
-        if(!$rez_upis1)
+		$rez1=$stmt->execute();
+        if(!$rez1)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ";
         }
         else
         {
-          echo "<h3>Podaci su uspesno obrisani!</h3>";
+          echo "<h3>Success!</h3>";
         }
 	}
 ?>
 <?php 
 error_reporting(0);
-		include('konekcija.php');
+		include('php/konekcija.php');
 		$username=$_POST['user'];
 		$password=$_POST['pass'];
 		$ime=$_POST['name'];
 		$prezime=$_POST['surname'];
 		$email=$_POST['email'];
-		$sql="INSERT INTO users VALUES('','$username','$password','$ime','$prezime','$email','')";
+		$sql="INSERT INTO users VALUES('',:username,:password,:ime,:prezime,:email,'')";
+		$stmt=$konekcija->prepare($sql);
+		$stmt->bindParam(":username",$username);
+		$stmt->bindParam(":password",$password);
+		$stmt->bindParam(":ime",$ime);
+		$stmt->bindParam(":prezime",$prezime);
+		$stmt->bindParam(":email",$email);
 		if (isset($_POST['submit'])){
-			$rez_upis = mysql_query($sql, $konekcija);
+			$rez_upis = $stmt->execute();
         if(!$rez_upis)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ".mysql_error();
         }
         else
         {
-          echo "<h3>Podaci su uspesno upisani!</h3>";
+          echo "<h3>Success!</h3>";
         }
       }
 		?>
 
 <?php 
 error_reporting(0);
-		include('konekcija.php');
+		include('php/konekcija.php');
 		$ime=$_POST['ime'];
 		$putanja=$_POST['putanja'];
-		$sql="INSERT INTO slika VALUES('','$ime','$putanja')";
+		$sql="INSERT INTO slika VALUES('',:ime,:putanja)";
+		$stmt=$konekcija->prepare($sql);
+		$stmt->bindParam(":ime",$ime);
+		$stmt->bindParam(":putanja",$putanja);
 		if (isset($_POST['slika_add'])){
-			$rez_upis = mysql_query($sql, $konekcija);
+			$rez_upis = $stmt->execute();
         if(!$rez_upis)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ";
         }
         else
         {
-          echo "<h3>Podaci su uspesno upisani!</h3>";
+          echo "<h3>Success!</h3>";
         }
       }
 		?>
 <?php
 error_reporting(0);
-	include('konekcija.php');
+	include('php/konekcija.php');
 		$id=$_POST['slika_id'];
-		$sql1="DELETE from slika WHERE slika_id=$id";
+		$sql2="DELETE from slika WHERE slika_id=:id";
+		$stmt=$konekcija->prepare($sql2);
+		$stmt->bindParam(":id",$id);
 	if (isset($_POST['delete_slika'])){
-			$rez_upis1 = mysql_query($sql1, $konekcija);
+			$rez_upis2 = $stmt->execute();
         if(!$rez_upis1)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ";
         }
         else
         {
-          echo "<h3>Podaci su uspesno obrisani!</h3>";
+          echo "<h3>Success!</h3>";
         }
 	}
 ?>
 <?php
 
-error_reporting(0);
-	include('konekcija.php');
+	include('php/konekcija.php');
 		$hero=$_POST['hero'];
-		$sql="UPDATE site_text SET text='$hero' WHERE id=1";
+		$sql="UPDATE site_text SET text=:hero WHERE id=1";
+		$stmt=$konekcija->prepare($sql);
+		$stmt->bindParam(":hero",$hero);
 		if (isset($_POST['hero_change'])){
-			$rez = mysql_query($sql, $konekcija);
+			$rez = $stmt->execute();
         if(!$rez)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ";
         }
         else
         {
-          echo "<h3>Podaci su uspesno promenjeni!</h3>";
+          echo "<h3>Success!</h3>";
         }
 	}
 ?>
@@ -165,21 +143,26 @@ error_reporting(0);
 <?php
 
 error_reporting(0);
-	include('konekcija.php');
+	include('php/konekcija.php');
 		$skill_id=$_POST['skill_id'];
 		$skill_image=$_POST['skill_image'];
 		$skill_heading=$_POST['skill_heading'];
 		$skill_text=$_POST['skill_text'];
-		$sql="UPDATE skills SET skill_image='$skill_image', skill_heading='$skill_heading', skill_text='$skill_text' WHERE id='$skill_id'";
+		$sql="UPDATE skills SET skill_image=:skill_image, skill_heading=:skill_heading, skill_text=:skill_text WHERE id=:skill_id";
+		$stmt=$konekcija->prepare($sql);
+		$stmt->bindParam(":skill_image",$skill_image);
+		$stmt->bindParam(":skill_heading",$skill_heading);
+		$stmt->bindParam(":skill_text",$skill_text);
+		$stmt->bindParam(":skill_id",$skill_id);
 		if (isset($_POST['skill_change'])){
-			$rez = mysql_query($sql, $konekcija);
+			$rez = $stmt->execute();
         if(!$rez)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ";
         }
         else
         {
-          echo "<h3>Podaci su uspesno promenjeni!</h3>";
+          echo "<h3>Success!</h3>";
         }
 	}
 ?>
@@ -187,104 +170,28 @@ error_reporting(0);
 <?php
 
 error_reporting(0);
-	include('konekcija.php');
+	include('php/konekcija.php');
 		$contact_location=$_POST['contact_location'];
 		$contact_phone=$_POST['contact_phone'];
 		$contact_email=$_POST['contact_email'];
-		$sql="UPDATE contact SET contact_location='$contact_location', contact_phone='$contact_phone', contact_email='$contact_email' WHERE id=1";
+		$sql="UPDATE contact SET contact_location=:contact_location, contact_phone=:contact_phone, contact_email=:contact_email WHERE id=1";
+		$stmt=$konekcija->prepare($sql);
+		$stmt->bindParam(":contact_location",$contact_location);
+		$stmt->bindParam(":contact_phone",$contact_phone);
+		$stmt->bindParam(":contact_email",$contact_email);
 		if (isset($_POST['contact_change'])){
-			$rez = mysql_query($sql, $konekcija);
+			$rez = $stmt->execute();
         if(!$rez)
         {
-          echo "Greska prilikom upisa podataka! ".mysql_error();
+          echo "Error! ";
         }
         else
         {
-          echo "<h3>Podaci su uspesno promenjeni!</h3>";
+          echo "<h3>Success!</h3>";
         }
 	}
 ?>
 
-<!doctype html>
-
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Isidora Nikolic</title>
-
-    <meta name="description" content="Isidora Nikolic portfolio webpage, take a peek and If you like it contact me to make something together">
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" type="text/css" href="css/notify.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-</head>
-
-<body>
-    <div id="preloader">
-        <div id="status">
-            <h1>ADMIN PANEL</h1>
-        </div>
-    </div>
-    <header id="header_nav" >
-        <span id="hamb" onclick="openNav()"><img src="img/list.svg" alt="hamburger"/></span>
-        <div id="myNav" class="overlay">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <div class="overlay-content">
-                <?php error_reporting(0); if($_SESSION['uloga']=="" ){?>
-                    <a href="login.php">log in</a></li>
-                <?php }?>
-                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                    <a href="uloga.php">index</a>
-                <?php }?>
-                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                    <a href="skills.php">skills</a>
-                <?php }?>
-                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                    <a href="work.php">work</a>
-                <?php }?>
-                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                    <a href="about.php">about</a>
-                <?php }?>
-                <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                    <a href="contact.php">contact</a>
-                    <?php }?>
-                <?php if($_SESSION['uloga']=="admin"){?>
-                    <a href="panel.php">admin</a>
-                <?php }?>
-                <?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
-                    <a href="login.php">log out</a>
-                <?php }?>
-            </div>
-        </div>
-        <nav class="cl-effect-1">
-            <?php error_reporting(0); if($_SESSION['uloga']=="" ){?>
-                <a href="login.php">log in</a></li>
-            <?php }?>
-            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                <a class="header_nav-link nav_color" href="uloga.php">index</a>
-            <?php }?>
-            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                <a class="header_nav-link nav_color" href="skills.php">skills</a>
-            <?php }?>
-            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                <a class="header_nav-link nav_color" href="work.php">work</a>
-            <?php }?>
-            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                <a class="header_nav-link nav_color" href="about.php">about</a>
-            <?php }?>
-            <?php  if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici") {?>
-                <a class="header_nav-link nav_color" href="contact.php">contact</a>
-            <?php }?>
-            <?php  if($_SESSION['uloga']=="admin") {?>
-                <a class="header_nav-link nav_color" href="panel.php">admin</a>
-            <?php }?>
-            <?php if($_SESSION['uloga']=="admin" || $_SESSION['uloga'] == "korisnici"){?>
-                <a class="header_nav-link nav_color" href="login.php">log out</a>
-            <?php }?>
-        </nav>
-	</header>
-	
 
 	<body>
 		<div class="tabela">
@@ -300,25 +207,25 @@ error_reporting(0);
 					</tr>
 					<?php 
         
-        $select_query="SELECT * FROM users";
-        $rezultat=mysql_query($select_query);
-        while($red=mysql_fetch_array($rezultat)){ ?>
+		$upit="SELECT * FROM users";
+		$rezultat = $konekcija->query($upit)->fetchAll();
+		foreach($rezultat as $r):?>
                   <tr>
-					  <td><?php echo $red['id']; ?></td>
-					  <td><?php echo $red['username']; ?></td>
-					  <td><?php echo $red['password']; ?></td>
-					  <td><?php echo $red['ime']; ?></td>
-					  <td><?php echo $red['prezime']; ?></td>
-					  <td><?php echo $red['email']; ?></td>
+					  <td><?php echo $r->id?></td>
+					  <td><?php echo $r->username ?></td>
+					  <td><?php echo $r->password ?></td>
+					  <td><?php echo $r->ime ?></td>
+					  <td><?php echo $r->prezime ?></td>
+					  <td><?php echo $r->email ?></td>
 					</tr>
-					<?php } ?>
+			<?php endforeach;?>
 				</table>
 			</div>
 		</div>
 		<div class="login">
 			<div class="loginf">
 				<h1>Add user</h1>
-				<form action="panel.php" method="POST">
+				<form action="control.php?page=panel" method="POST">
 					<input type="text" name="user" placeholder="Username" class="notsameline1">
 					<input type="password"placeholder="Password" name="pass" class="notsameline1">
 					<input type="text" name="name"placeholder="First name" class="notsameline1">
@@ -327,12 +234,12 @@ error_reporting(0);
 					<input type="submit" name="submit"  class="sblog btnposalji" value="Add"/>
 				</form>
 				<h1>Delete user</h1>
-				<form action="panel.php" method="POST">
+				<form action="control.php?page=panel" method="POST">
 				<input type="text" name="id" placeholder="ID"class="notsameline1">
 					<input type="submit" name="delete"  class="sblog btnposalji" value="Delete">
 				</form>
 				<h1>Change user</h1>
-				<form action="panel.php" method="POST">
+				<form action="control.php?page=panel" method="POST">
 				<input type="text" name="id1" placeholder="ID" class="notsameline1">
 					<input type="text" name="username1"placeholder="Username"class="notsameline1">
 					<input type="password" name="password1"placeholder="Password"class="notsameline1">
@@ -355,42 +262,42 @@ error_reporting(0);
 				</tr>
 				<?php 
         
-        $select_query="SELECT * FROM slika";
-        $rezultat=mysql_query($select_query);
-        while($red=mysql_fetch_array($rezultat)){ ?>
+       $upit1="SELECT * FROM slika";
+	   $rezultat1 = $konekcija->query($upit1)->fetchAll();
+        foreach($rezultat1 as $rez):?>
                   <tr>
-					  <td><?php echo $red['slika_id']; ?></td>
-					  <td><?php echo $red['ime']; ?></td>
-					  <td><?php echo $red['putanja']; ?></td>
+					  <td><?php echo $rez->slika_id ?></td>
+					  <td><?php echo $rez->ime ?></td>
+					  <td><?php echo $rez->putanja ?></td>
 					</tr>
-					<?php } ?>
+			<?php endforeach; ?>
 				</table>
 			</div>
 		</div>
 		<div class="image__change">
-			<form name="slika" action="panel.php" method="POST">
+			<form name="slika" action="control.php?page=panel" method="POST">
 				<h1>Add picture</h1>
 				<input type="text" name="ime" placeholder="Picture name" class="notsameline1">
 				<input type="text" placeholder="Picture URL" name="putanja" class="notsameline1">
 				<input type="submit" name="slika_add" class="sblog btnposalji" value="Add">
 			</form>
 			<h1>Delete picture</h1>
-			<form action="panel.php" method="POST">
+			<form action="control.php?page=panel" method="POST">
 				<input type="text" name="slika_id" placeholder="ID" class="notsameline1">
 				<input type="submit" name="delete_slika" class="sblog btnposalji" value="Delete">
 			</form>
 		</div>
 
 		<div class="hero-header__change">
-			<form name="hero" action="panel.php" method="POST">
+			<form name="hero" action="control.php?page=panel" method="POST">
 				<h1>Change hero header</h1>
 				<?php 
 					include('konekcija.php');
 					$heroText = "SELECT * FROM site_text WHERE id=1"; 
-					$rezultat=mysql_query($heroText);
-					$obj=mysql_fetch_assoc($rezultat);
+					$rezultat = $konekcija->query($heroText)->fetchAll();
+					$obj = $rezultat[0]->text;
 				?>
-				<input type="textarea" placeholder="Insert text" value="<?php echo $obj['text'] ?>" name="hero" class="notsameline1"> 
+				<input type="textarea" placeholder="Insert text" value="<?php echo $obj ?>" name="hero" class="notsameline1"> 
 				<input type="submit" name="hero_change" class="sblog btnposalji" value="Change">
 			</form>
 		</div>
@@ -407,20 +314,20 @@ error_reporting(0);
 				</tr>
 				<?php 
         
-        $select_query="SELECT * FROM skills";
-        $rezultat=mysql_query($select_query);
-        while($red=mysql_fetch_array($rezultat)){ ?>
+        $upit2="SELECT * FROM skills";
+		$rezultat2 = $konekcija->query($upit2)->fetchAll();
+        foreach($rezultat2 as $re):?>
                   <tr>
-					  <td><?php echo $red['id']; ?></td>
-					  <td><?php echo $red['skill_image']; ?></td>
-					  <td><?php echo $red['skill_heading']; ?></td>
-					  <td><?php echo $red['skill_text']; ?></td>
+					  <td><?php echo $re->id ?></td>
+					  <td><?php echo $re->skill_image ?></td>
+					  <td><?php echo $re->skill_heading ?></td>
+					  <td><?php echo $re->skill_text ?></td>
 					</tr>
-					<?php } ?>
+			<?php endforeach; ?>
 				</table>
 			</div>
 		</div>
-			<form name="skill" action="panel.php" method="POST">
+			<form name="skill" action="control.php?page=panel" method="POST">
 				<h1>Change skill</h1>
 				<input type="number" placeholder="Insert ID" name="skill_id" class="notsameline1"> 
 				<input type="text" placeholder="Insert URL" name="skill_image" class="notsameline1"> 
@@ -441,20 +348,20 @@ error_reporting(0);
 				</tr>
 				<?php 
         
-        $select_query="SELECT * FROM contact";
-        $rezultat=mysql_query($select_query);
-        while($red=mysql_fetch_array($rezultat)){ ?>
+        $upit3="SELECT * FROM contact";
+        $rezultat3 = $konekcija->query($upit3)->fetchAll();
+        foreach($rezultat3 as $rez3):?>
                   <tr>
-					  <td><?php echo $red['contact_location']; ?></td>
-					  <td><?php echo $red['contact_phone']; ?></td>
-					  <td><?php echo $red['contact_email']; ?></td>
+					  <td><?php echo $rez3->contact_location ?></td>
+					  <td><?php echo $rez3->contact_phone ?></td>
+					  <td><?php echo $rez3->contact_email ?></td>
 					</tr>
-					<?php } ?>
+			<?php endforeach; ?>
 				</table>
 			</div>
 		</div>
-			<form name="skill" action="panel.php" method="POST">
-				<h1>Change skill</h1>
+			<form name="skill" action="control.php?page=panel" method="POST">
+				<h1>Change contact</h1>
 				<input type="text" placeholder="Insert address" name="contact_location" class="notsameline1"> 
 				<input type="text" placeholder="Insert phone" name="contact_phone" class="notsameline1"> 
 				<input type="text" placeholder="Insert email" name="contact_email" class="notsameline1"> 
@@ -462,17 +369,7 @@ error_reporting(0);
 			</form>
 		</div>
 
-    <footer>
-        <span>&copy; 2018 Isidora Nikolic, Nova Pazova, Serbia <a href="http://www.ict.edu.rs/">ICT Visoka skola</a></span>
-    </footer>
-</body>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/preloader.js"></script>
-<script type="text/javascript" src="js/skript.js"></script>
-<script type="text/javascript" src="js/classie.js"></script>
-<script type="text/javascript" src="js/notify.js"></script>
-<script type="text/javascript" src="js/validacija.js"></script>
-
-</html>
+   
+   <?php 
+    include "views/footer.php";
+?>

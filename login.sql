@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2018 at 11:52 PM
+-- Generation Time: Feb 12, 2018 at 08:21 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -25,45 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ankete`
---
-
-CREATE TABLE `ankete` (
-  `id_ankete` int(10) NOT NULL,
-  `pitanje` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `aktivna` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `ankete`
---
-
-INSERT INTO `ankete` (`id_ankete`, `pitanje`, `aktivna`) VALUES
-(30, 'Da li vas je impresionirao sajt?', 0),
-(31, 'Pozz', 1),
-(32, 'Pozz', 0),
-(33, 'a', 0),
-(34, 'a', 0),
-(35, 'a', 0),
-(36, 'a', 0),
-(37, 'a', 0),
-(38, 'a', 0),
-(39, 'a', 0),
-(40, 'a', 0),
-(41, 'a', 0),
-(42, 'a', 0),
-(43, 'a', 0),
-(44, 'a', 0),
-(45, 'a', 0),
-(46, 'a', 0),
-(47, 'a', 0),
-(48, 'a', 0),
-(49, 'a', 0),
-(50, 'a', 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `contact`
 --
 
@@ -80,81 +41,6 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `contact_location`, `contact_phone`, `contact_email`) VALUES
 (1, 'Milosa Obilica 14, Nova Pazova', '+381 69 563 64 15', 'isidora.nikolic.167.15@ict.edu.rs');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kontakt`
---
-
-CREATE TABLE `kontakt` (
-  `id` int(5) NOT NULL,
-  `ime_prezime` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `pitanje` varchar(150) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `kontakt`
---
-
-INSERT INTO `kontakt` (`id`, `ime_prezime`, `email`, `pitanje`) VALUES
-(10, 'Isidora Nikolic', 'nikolic26.isidora@gmail.com', 'dadsadasd');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `odgovori`
---
-
-CREATE TABLE `odgovori` (
-  `id_odgovori` int(10) NOT NULL,
-  `id_ankete` int(10) NOT NULL,
-  `odgovori` varchar(60) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `odgovori`
---
-
-INSERT INTO `odgovori` (`id_odgovori`, `id_ankete`, `odgovori`) VALUES
-(25, 30, 'da'),
-(26, 30, 'ne'),
-(50, 0, 'odg1'),
-(51, 0, 'odg2'),
-(53, 57, 'ne'),
-(56, 57, 'ne'),
-(57, 57, 'ne'),
-(65, 31, 'da'),
-(66, 31, 'ne'),
-(67, 31, 'ne'),
-(72, 57, 'ne'),
-(73, 57, 'ne'),
-(75, 33, 'naravno'),
-(76, 57, 'onako'),
-(77, 57, 'onako'),
-(78, 33, 'onako'),
-(79, 33, 'onako'),
-(80, 31, 'jeste'),
-(81, 31, 'jeste'),
-(82, 33, 'a'),
-(83, 33, 'a'),
-(84, 33, 'a'),
-(85, 33, 'a'),
-(86, 33, 'a'),
-(87, 33, 'a'),
-(88, 33, 'a'),
-(89, 33, 'a'),
-(90, 33, 'a'),
-(91, 33, 'a'),
-(92, 33, 'a'),
-(93, 33, 'a'),
-(94, 33, 'a'),
-(95, 33, 'a'),
-(96, 33, 'a'),
-(97, 33, 'a'),
-(98, 33, 'a'),
-(99, 33, 'a');
 
 -- --------------------------------------------------------
 
@@ -258,7 +144,9 @@ INSERT INTO `slika` (`slika_id`, `ime`, `putanja`) VALUES
 (4, 'prva', 'img/gal1.jpg'),
 (5, 'druga', 'img/gal2.jpg'),
 (6, 'treca', 'img/gal3.jpg'),
-(7, 'cetvrta', 'img/gal4.jpg');
+(7, 'cetvrta', 'img/gal4.jpg'),
+(8, 'peta', 'img/gal5.jpg'),
+(9, 'sesta', 'img/gal6.jpg');
 
 -- --------------------------------------------------------
 
@@ -290,28 +178,10 @@ INSERT INTO `users` (`id`, `username`, `password`, `ime`, `prezime`, `email`, `u
 --
 
 --
--- Indexes for table `ankete`
---
-ALTER TABLE `ankete`
-  ADD PRIMARY KEY (`id_ankete`);
-
---
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kontakt`
---
-ALTER TABLE `kontakt`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `odgovori`
---
-ALTER TABLE `odgovori`
-  ADD PRIMARY KEY (`id_odgovori`);
 
 --
 -- Indexes for table `rezultat`
@@ -348,28 +218,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `ankete`
---
-ALTER TABLE `ankete`
-  MODIFY `id_ankete` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-
---
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `kontakt`
---
-ALTER TABLE `kontakt`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `odgovori`
---
-ALTER TABLE `odgovori`
-  MODIFY `id_odgovori` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rezultat`
@@ -387,19 +239,19 @@ ALTER TABLE `site_text`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `slika`
 --
 ALTER TABLE `slika`
-  MODIFY `slika_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `slika_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
